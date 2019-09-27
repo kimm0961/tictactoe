@@ -5,12 +5,15 @@ const Board = (props) => {
 
     const [squares, setSquares] = useState(
         Array(9).fill(null)
-    )
+    );
+
+    const [xIsNext, setxIsNext] = useState(true);
 
     const handleClick = (i) => {
         const sq = squares.slice();
-        sq[i] = 'X';
+        sq[i] = xIsNext ? 'X' : 'O';
         setSquares (sq);
+        setxIsNext(!xIsNext);
     }
 
     const renderSquare = (i) => {
@@ -21,7 +24,7 @@ const Board = (props) => {
         );
     }
 
-    const status = 'Next player: X';
+    const status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 
     return ( 
 
